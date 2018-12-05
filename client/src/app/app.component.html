@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <app-header></app-header>
+  <app-banner *ngIf="route.url=='/'"></app-banner>
+  <app-blogpost-featured *ngIf="route.url=='/'"></app-blogpost-featured>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+
+</div>

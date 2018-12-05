@@ -1,0 +1,21 @@
+<section class="featured-blog mtb-40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let blog of blogPost">
+        <div class="blog-box">
+          <img src="http://localhost:1978/uploads/{{blog.image}}" alt="blog1" />
+          <h3>{{ blog.title }}</h3>
+          <p>
+            by
+            <span>{{ blog.author.firstname }} {{ blog.author.lastname }}</span>
+            on <span>{{ blog.create_at | date: "mediumDate" }}</span>
+          </p>
+          <p>{{ blog.short_desc }}</p>
+          <a [routerLink]="['/blog', blog._id]" class="btn btn-danger"
+            >Read more...</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

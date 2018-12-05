@@ -1,0 +1,14 @@
+<div class="right-widget recent-post">
+  <h3>Recent Blogs</h3>
+  <a href="#" *ngFor="let rBlog of recentBlog">
+    <div class="rb-box">
+      <div class="rb-box-img">
+        <img src="http://localhost:1978/uploads/{{rBlog.image}}" alt="blog1" />
+      </div>
+      <div class="rb-box-desc">
+        <h4>{{ rBlog.title }}</h4>
+        <p>Posted On:{{ rBlog.created_at | date: "mediumDate" }}</p>
+      </div>
+    </div>
+  </a>
+</div>
