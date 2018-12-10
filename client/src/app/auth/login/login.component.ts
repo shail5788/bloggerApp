@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
-
+import { IUser } from "./user.model";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   redirectUrl: string;
   error: {};
   loginError: string;
+  user: IUser;
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
       username: ["", Validators.required],
       password: ["", Validators.required]
     });
+    console.log(localStorage.getItem("currentUser"));
   }
   get username() {
     return this.loginForm.get("username");
@@ -37,7 +39,6 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.login(this.username.value, this.password.value).subscribe(
       res => {
-        console.log(this.authService.isLoggedIn);
         if (this.authService.isLoggedIn) {
           const redirect = this.authService.redirectUrl
             ? this.authService.redirectUrl

@@ -23,12 +23,10 @@ exports.signup = function(req, res, next) {
   const mobile = req.body.mobile;
 
   if (!firstname || !lastname || !email || !username || !password) {
-    return res
-      .status(422)
-      .json({
-        success: false,
-        message: "Posted data is not correct or incomplete."
-      });
+    return res.status(422).json({
+      success: false,
+      message: "Posted data is not correct or incomplete."
+    });
   }
 
   User.findOne({ username: username }, function(err, existingUser) {
@@ -99,15 +97,13 @@ exports.login = function(req, res, next) {
 
           user.save(function(err) {
             if (err) {
-              res
-                .status(400)
-                .json({
-                  success: false,
-                  message: "Error processing request " + err
-                });
+              res.status(400).json({
+                success: false,
+                message: "Error processing request " + err
+              });
             }
 
-            res.status(201).json({
+            res.status(201).send({
               success: true,
               message: {
                 userid: user._id,
@@ -121,7 +117,7 @@ exports.login = function(req, res, next) {
         } else {
           res
             .status(201)
-            .json({ success: false, message: "Incorrect login credentials." });
+            .send({ success: false, message: "Incorrect login credentials." });
         }
       });
     }
@@ -135,13 +131,11 @@ exports.authenticate = function(req, res, next) {
   if (token) {
     jwt.verify(token, config.secret, function(err, decoded) {
       if (err) {
-        return res
-          .status(201)
-          .json({
-            success: false,
-            message: "Authenticate token expired, please login again.",
-            errcode: "exp-token"
-          });
+        return res.status(201).json({
+          success: false,
+          message: "Authenticate token expired, please login again.",
+          errcode: "exp-token"
+        });
       } else {
         req.decoded = decoded;
         next();
@@ -199,12 +193,10 @@ exports.updateUser = function(req, res, next) {
   const userid = req.body.userid;
 
   if (!firstname || !lastname || !email || !userid) {
-    return res
-      .status(422)
-      .json({
-        success: false,
-        message: "Posted data is not correct or incompleted."
-      });
+    return res.status(422).json({
+      success: false,
+      message: "Posted data is not correct or incompleted."
+    });
   } else {
     User.findById(userid).exec(function(err, user) {
       if (err) {
@@ -221,12 +213,10 @@ exports.updateUser = function(req, res, next) {
       }
       user.save(function(err) {
         if (err) {
-          res
-            .status(400)
-            .json({
-              success: false,
-              message: "Error processing request " + err
-            });
+          res.status(400).json({
+            success: false,
+            message: "Error processing request " + err
+          });
         }
         res.status(201).json({
           success: true,
@@ -244,12 +234,10 @@ exports.userProfileUpdate = function(req, res, next) {
   const userid = req.params.id;
 
   if (!firstname || !lastname || !email || !userid) {
-    return res
-      .status(422)
-      .json({
-        success: false,
-        message: "Posted data is not correct or incompleted."
-      });
+    return res.status(422).json({
+      success: false,
+      message: "Posted data is not correct or incompleted."
+    });
   } else {
     User.findById(userid).exec(function(err, user) {
       if (err) {
@@ -266,12 +254,10 @@ exports.userProfileUpdate = function(req, res, next) {
       }
       user.save(function(err) {
         if (err) {
-          res
-            .status(400)
-            .json({
-              success: false,
-              message: "Error processing request " + err
-            });
+          res.status(400).json({
+            success: false,
+            message: "Error processing request " + err
+          });
         }
         res.status(201).json({
           success: true,
@@ -287,12 +273,10 @@ exports.updatePassword = function(req, res, next) {
   const password = req.body.password;
 
   if (!oldpassword || !password || !userid) {
-    return res
-      .status(422)
-      .json({
-        success: false,
-        message: "Posted data is not correct or incompleted."
-      });
+    return res.status(422).json({
+      success: false,
+      message: "Posted data is not correct or incompleted."
+    });
   } else {
     User.findOne({ _id: userid }, function(err, user) {
       if (err) {
@@ -307,12 +291,10 @@ exports.updatePassword = function(req, res, next) {
 
             user.save(function(err) {
               if (err) {
-                res
-                  .status(400)
-                  .json({
-                    success: false,
-                    message: "Error processing request " + err
-                  });
+                res.status(400).json({
+                  success: false,
+                  message: "Error processing request " + err
+                });
               }
 
               res.status(201).json({

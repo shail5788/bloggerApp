@@ -13,6 +13,12 @@
                 class="form-control"
                 placeholder="Username"
               />
+              <div
+                *ngIf="username.invalid && (username.dirty || username.touched)"
+                class="error"
+              >
+                <div *ngIf="username.errors">Username is Invalid</div>
+              </div>
             </div>
             <div class="form-group">
               <input
@@ -22,6 +28,12 @@
                 class="form-control"
                 placeholder="Password"
               />
+              <div
+                *ngIf="password.invalid && (password.dirty || password.tauched)"
+                class="error"
+              >
+                <div *ngIf="password.errors">Password is invalid</div>
+              </div>
             </div>
             <div class="form-group">
               <button
@@ -35,6 +47,10 @@
           </form>
         </div>
       </div>
+    </div>
+    <div class="service-error" *ngIf="error">
+      <h1>{{ error.errorTitle }}</h1>
+      <h3>{{ error.errorDesc }}</h3>
     </div>
   </div>
 </section>
