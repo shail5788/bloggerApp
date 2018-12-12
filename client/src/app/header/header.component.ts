@@ -14,16 +14,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
   get isLoggedIn() {
     //return this.authService.isLoggedIn;
-    if (localStorage.getItem("currrentUser")) {
-      console.log("sdfsdfsfdsd");
+    //console.log(typeof this.authService.getAuthorizationToken());
+    if (typeof this.authService.getAuthorizationToken() != "undefined") {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
   userLogout() {
     this.authService.isLoggedIn = false;
-    let currentUser = false;
+    let currentUser = "false";
     localStorage.setItem("currentUser", currentUser);
     this.router.navigate(["/login"]);
   }

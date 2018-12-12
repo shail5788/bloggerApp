@@ -4,6 +4,9 @@
       <div class="col-md-6">
         <div class="login-box">
           <h1>Administrator Login</h1>
+
+          <span *ngIf="error" class="text-danger">{{ error.message }}</span>
+
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <input

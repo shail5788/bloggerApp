@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       username: ["", Validators.required],
       password: ["", Validators.required]
     });
-    console.log(localStorage.getItem("currentUser"));
+    // console.log(localStorage.getItem("currentUser"));
   }
   get username() {
     return this.loginForm.get("username");
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
             : "/admin";
           this.router.navigate([redirect]);
         } else {
+          this.error = this.authService.error;
           this.loginError = "Username or Password wrong!";
         }
       },
