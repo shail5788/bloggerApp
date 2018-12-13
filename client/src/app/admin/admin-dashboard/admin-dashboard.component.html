@@ -2,7 +2,11 @@
   <div class="dash-title">
     <h1>{{ title }}</h1>
   </div>
-  <div class="dash-nav"><a href="#" class="btn btn-success">Add Post</a></div>
+  <div class="dash-nav">
+    <button class="btn btn-success" (click)="openModal('creat-blog')">
+      Add Post
+    </button>
+  </div>
 </div>
 <table class="table table-bordered table-striped">
   <tr>
@@ -25,3 +29,9 @@
 </table>
 
 {{ error }}
+<!-- Modal Template -->
+<pop-modal id="creat-blog">
+  <h1 style="height:1000px">A Tall Custom Modal!</h1>
+  <button (click)="closeModal('creat-blog')">Close</button>
+</pop-modal>
+<!-- end modal template -->

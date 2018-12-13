@@ -14,6 +14,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { BannerComponent } from "./banner/banner.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { httpInterceptorProviders } from "./http-interceptors/index";
+// import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { httpInterceptorProviders } from "./http-interceptors/index";
     FooterComponent,
     BannerComponent,
     PageNotFoundComponent
+    // ModalComponent
   ],
   imports: [
     BrowserModule,

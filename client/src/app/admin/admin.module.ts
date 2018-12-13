@@ -7,6 +7,8 @@ import { AdminComponent } from "./admin/admin.component";
 import { ManageBlogComponent } from "./manage-blog/manage-blog.component";
 import { ManageCategoriesComponent } from "./manage-categories/manage-categories.component";
 import { ManagePagesComponent } from "./manage-pages/manage-pages.component";
+import { ModalComponent } from "../shared/modal";
+import { ModalService } from "../shared/service";
 
 @NgModule({
   declarations: [
@@ -14,8 +16,10 @@ import { ManagePagesComponent } from "./manage-pages/manage-pages.component";
     AdminComponent,
     ManageBlogComponent,
     ManageCategoriesComponent,
-    ManagePagesComponent
+    ManagePagesComponent,
+    ModalComponent
   ],
-  imports: [CommonModule, AdminRoutingModule]
+  imports: [CommonModule, AdminRoutingModule],
+  providers: [ModalService]
 })
 export class AdminModule {}
