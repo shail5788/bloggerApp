@@ -15,11 +15,28 @@ const routes: Routes = [
     children: [
       {
         path: "",
+        canActivate: [AuthGuard],
         children: [
-          { path: "blogs", component: ManageBlogComponent },
-          { path: "categories", component: ManageCategoriesComponent },
-          { path: "pages", component: ManagePagesComponent },
-          { path: "", component: AdminDashboardComponent }
+          {
+            path: "blogs",
+            component: ManageBlogComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: "categories",
+            component: ManageCategoriesComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: "pages",
+            component: ManagePagesComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: "",
+            component: AdminDashboardComponent,
+            canActivate: [AuthGuard]
+          }
         ]
       }
     ]

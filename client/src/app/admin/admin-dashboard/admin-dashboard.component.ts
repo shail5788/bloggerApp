@@ -4,7 +4,7 @@ import { AuthService } from "../../auth/auth.service";
 import { Router } from "@angular/router";
 import { BlogService } from "../services/blog.service";
 import { Blog } from "../models/blog";
-import "../../shared/modal-css/modal.less";
+//import "../../shared/modal-css/modal.less";
 @Component({
   selector: "app-admin-dashboard",
   templateUrl: "./admin-dashboard.component.html",
